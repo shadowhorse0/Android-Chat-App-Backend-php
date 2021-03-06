@@ -8,11 +8,16 @@ $response = null;
 switch ($request_type) {
     case "signup":
         $response['status'] = true;
+        $username=$data['username'];
+        $email=$data['email'];
+        $phone=$data['phone'];
+        $password=$data['password'];
 
-        $response['username'] = $data['username'];
-        $response['email'] = $data['email'];
-        $response['phone'] = $data['phone'];
-        $response['password'] = $data['password'];
+        
+
+
+        $sql="INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ("$username","$email","$phone","$password")";
+        $conn->query($sql);
         break;
 }
 
