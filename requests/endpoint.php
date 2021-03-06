@@ -1,8 +1,8 @@
 <?php
 $request_type = $_POST['request_type'];
-$data = $_POST['data'];
+// $data = $_POST['data'];
 // $data = json_decode($data, true);
-$response = $data;
+$response = $request_type;
 // $response = null;
 
 // switch ($request_type) {
