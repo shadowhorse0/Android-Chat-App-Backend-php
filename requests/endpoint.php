@@ -3,7 +3,7 @@ $request_type = $_POST['request_type'];
 $data = $_POST['data'];
 $data = json_decode($data, true);
 $response = $request_type;
-$response = "hello";
+$response['hello']="helllo";
 
 switch ($request_type) {
     case "signup":
