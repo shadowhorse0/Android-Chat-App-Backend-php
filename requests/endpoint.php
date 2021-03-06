@@ -13,7 +13,7 @@ switch ($request_type) {
         $phone = $data['phone'];
         $password = $data['password'];
 
-        $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$phone','$password')";
+        $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$password','$phone')";
         $result = $conn->query($sql);
 
         if (!$result) {
