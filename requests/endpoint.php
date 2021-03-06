@@ -1,8 +1,9 @@
 <?php
+include "../db/db.php";
 $request_type = $_POST['request_type'];
 $data = $_POST['data'];
 $data = json_decode($data, true);
-$response['request_type'] = "beta nahi aahe request type";
+$response = null;
 
 switch ($request_type) {
     case "signup":
@@ -12,17 +13,15 @@ switch ($request_type) {
         $phone = $data['phone'];
         $password = $data['password'];
 
+        $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$phone','$password')";
+        $result = $conn->query($sql);
 
-
-
-        // $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$phone','$password')";
-        // $result = $conn->query($sql);
         $result = true;
         if (!$result) {
             $response["error"] = $conn->error;
         } else {
             $response["status"] = true;
-            $response["msg"] = "Your test was successfull";
+            $response["msg"] = "data inserted successfully";
         }
         break;
 }
