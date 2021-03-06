@@ -2,7 +2,7 @@
 $request_type = $_POST['request_type'];
 $data = $_POST['data'];
 $data = json_decode($data, true);
-$response['request_type'] = $request_type;
+$response['request_type'] = "beta nahi aahe request type";
 
 switch ($request_type) {
     case "signup":
