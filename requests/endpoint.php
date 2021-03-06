@@ -16,7 +16,6 @@ switch ($request_type) {
         $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$phone','$password')";
         $result = $conn->query($sql);
 
-        $result = true;
         if (!$result) {
             $response["error"] = $conn->error;
         } else {
