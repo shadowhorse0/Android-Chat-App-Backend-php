@@ -13,18 +13,38 @@ switch ($request_type) {
         $phone = $data['phone'];
         $password = $data['password'];
 
-
+        
 
 
         $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$phone','$password')";
         $result=$conn->query($sql);
-        if(!$result){
-            $response["error"]=$conn->error;
+        try{
+            //Check if email already exits
+            $sql="SELECT * FROM `users` WHERE `email`='$email'";
+            $result=$conn->query($sql);
+            if ($result->num_rows!=0) {
+                throw new Exception("Email already exists!!");
+            }
+
+            //Check if username already exits
+            $sql="SELECT * FROM `users` WHERE `username`='$username'";
+            $result=$conn->query($sql);
+            if ($result->num_rows!=0) {
+                throw new Exception("Username already exists!!");
+            }
+            
+
+        
+            $response['status']=true;
+            $response['msg']="Sign up Successfully!!";
+
+        }catch(Exception $e){
+            $response['status']=false;
+            $response['msg']=$e->getMessage();
         }
-        else{
-            $response["status"]=true;
-            $response["msg"]="Your test was successfull";
-        }
+
+        
+
         break;
 }
 
