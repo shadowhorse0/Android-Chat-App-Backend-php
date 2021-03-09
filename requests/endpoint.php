@@ -1,6 +1,7 @@
 <?php
 
 //dummy values to check php is correct
+$data = new \stdClass();
 $data->username = "vaibhav";
 $data->email = "vaibhav.111padghan";
 $data->phone = "7517263842";
