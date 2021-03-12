@@ -45,7 +45,7 @@ switch ($request_type) {
             }
 
             //check password here
-            if (strlen($phone) <= 5) {
+            if (strlen($password) <= 5) {
                 throw new Exception("Password length must be greater than 5 characters!");
             }
 
