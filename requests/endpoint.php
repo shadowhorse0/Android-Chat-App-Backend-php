@@ -26,9 +26,6 @@ switch ($request_type) {
 
 
 
-
-        $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$phone','$password')";
-        $result = $conn->query($sql);
         try {
             //Check if email already exits
             $sql = "SELECT * FROM `users` WHERE `email`='$email'";
@@ -44,7 +41,8 @@ switch ($request_type) {
                 throw new Exception("Username already exists!!");
             }
 
-
+            $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$phone','$password')";
+            $result = $conn->query($sql);
 
             $response['status'] = true;
             $response['msg'] = "Sign up Successfully!!";
