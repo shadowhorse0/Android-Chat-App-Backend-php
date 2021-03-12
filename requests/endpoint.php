@@ -27,6 +27,29 @@ switch ($request_type) {
 
 
         try {
+            //check if anything is blank
+
+            //check username here
+            if (strlen($username) == 0) {
+                throw new Exception("Username must not be blank!");
+            }
+
+            //check email here
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception("Email is not valid!");
+            }
+
+            //check phone here
+            if (strlen($phone) != 10) {
+                throw new Exception("Phone number must be of 10 digit!");
+            }
+
+            //check password here
+            if (strlen($phone) <= 5) {
+                throw new Exception("Password length must be greater than 5 characters!");
+            }
+
+
             //Check if email already exits
             $sql = "SELECT * FROM `users` WHERE `email`='$email'";
             $result = $conn->query($sql);
