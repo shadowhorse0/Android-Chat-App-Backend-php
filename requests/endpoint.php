@@ -1,18 +1,18 @@
 <?php
 include "../db/db.php";
-//dummy values to check php is correct
-// $data = new \stdClass();
-// $data->username = "vaibhav";
-// $data->email = "vaibhav.111padghan";
-// $data->phone = "7517263842";
-// $data->password = "vaibhav";
+// dummy values to check php is correct
+$data = new \stdClass();
+$data->username = "vaibhav";
+$data->email = "vaibhav.111padghan";
+$data->phone = "7517263842";
+$data->password = "vaibhav";
 
-// $data = json_encode($data);
-// $request_type = "signup";
+$data = json_encode($data);
+$request_type = "signup";
 
 //dummy values finish here
-$request_type = $_POST['request_type'];
-$data = $_POST['data'];
+// $request_type = $_POST['request_type'];
+// $data = $_POST['data'];
 $data = json_decode($data, true);
 $response = null;
 
@@ -50,10 +50,6 @@ switch ($request_type) {
             $response['status'] = false;
             $response['msg'] = $e->getMessage();
         }
-
-
-
-
         break;
 }
 
