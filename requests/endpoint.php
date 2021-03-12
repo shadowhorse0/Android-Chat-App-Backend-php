@@ -33,14 +33,14 @@ switch ($request_type) {
             //Check if email already exits
             $sql = "SELECT * FROM `users` WHERE `email`='$email'";
             $result = $conn->query($sql);
-            if ($result->num_rows != 0) {
+            if ($result->num_rows >= 1) {
                 throw new Exception("Email already exists!!");
             }
 
             //Check if username already exits
             $sql = "SELECT * FROM `users` WHERE `username`='$username'";
             $result = $conn->query($sql);
-            if ($result->num_rows != 0) {
+            if ($result->num_rows >= 1) {
                 throw new Exception("Username already exists!!");
             }
 
