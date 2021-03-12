@@ -7,8 +7,8 @@ include "../db/db.php";
 // $data->phone = "7517263842";
 // $data->password = "vaibhav";
 
-$data = json_encode($data);
-$request_type = "signup";
+// $data = json_encode($data);
+// $request_type = "signup";
 
 //dummy values finish here
 
