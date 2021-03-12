@@ -45,7 +45,7 @@ switch ($request_type) {
             $result = $conn->query($sql);
 
             $response['status'] = true;
-            $response['msg'] = "Sign up Successfully!!";
+            $response['msg'] = "Sign up Successfull!!";
         } catch (Exception $e) {
             $response['status'] = false;
             $response['msg'] = $e->getMessage();
