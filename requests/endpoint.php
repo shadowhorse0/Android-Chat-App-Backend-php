@@ -12,9 +12,9 @@ include "../db/db.php";
 
 //dummy values finish here
 
-$request_type = $_POST['request_type'];
 $data = $_POST['data'];
 $data = json_decode($data, true);
+$request_type = $data['request_type'];
 $response = $request_type;
 $response = null;
 
