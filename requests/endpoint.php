@@ -84,7 +84,7 @@ switch ($request_type) {
         $username = $data['signin_username'];
         $password = $data['signin_password'];
 
-        
+        //sql for check same username and password
 
         try{
             $sql = "SELECT * FROM `users` WHERE `username`='$username' AND `password` ='$password'";
