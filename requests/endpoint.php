@@ -16,6 +16,7 @@ $data = $_POST['data'];
 $data = json_decode($data, true);
 $response = null;
 
+
 switch ($request_type) {
     case "signup":
         $response['status'] = true;
@@ -24,10 +25,11 @@ switch ($request_type) {
         $phone = $data['phone'];
         $password = $data['password'];
 
-
+        
 
         try {
             //check if anything is blank
+            
 
             //check username here
             if (strlen($username) == 0) {
@@ -74,6 +76,39 @@ switch ($request_type) {
             $response['msg'] = $e->getMessage();
         }
         break;
+
+        //case for sign in
+
+    case "signup":
+        $response['status'] = true;
+        $username = $data['signin_username'];
+        $password = $data['signin_password'];
+
+        
+
+        try{
+            $sql = "SELECT * FROM `users` WHERE `username`='$username' && 'password' ='$password'";
+            $result = $conn->query($sql);
+            $noOF=mysqli_num_rows($result);
+            if($noOF!=1){
+                throw new Exception("not such user");
+            }
+         
+
+            $response['status'] = true;
+            $response['msg'] = "Sign in Successfully!!";
+
+        }
+        catch (Exception $e) {
+            $response['status'] = false;
+            $response['msg'] = $e->getMessage();
+        }
+        break;
+
+
+
+
+
 }
 
 $response = json_encode($response);
