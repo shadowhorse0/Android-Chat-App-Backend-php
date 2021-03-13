@@ -87,7 +87,7 @@ switch ($request_type) {
         
 
         try{
-            $sql = "SELECT * FROM `users` WHERE `username`='$username' AND 'password' ='$password'";
+            $sql = "SELECT * FROM `users` WHERE `username`='$username' AND `password` ='$password'";
             $result = $conn->query($sql);
             $noOF=mysqli_num_rows($result);
             if($noOF!=1){
