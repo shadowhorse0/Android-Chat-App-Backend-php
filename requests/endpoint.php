@@ -79,7 +79,7 @@ switch ($request_type) {
 
         //case for sign in
 
-    case "signup":
+    case "signin":
         $response['status'] = true;
         $username = $data['signin_username'];
         $password = $data['signin_password'];
