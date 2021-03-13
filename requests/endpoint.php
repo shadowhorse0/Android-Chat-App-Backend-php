@@ -25,11 +25,11 @@ switch ($request_type) {
         $phone = $data['phone'];
         $password = $data['password'];
 
-        
+
 
         try {
             //check if anything is blank
-            
+
 
             //check username here
             if (strlen($username) == 0) {
@@ -66,7 +66,7 @@ switch ($request_type) {
                 throw new Exception("Username already exists!!");
             }
 
-            $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$phone','$password')";
+            $sql = "INSERT INTO `users`(`username`, `email`, `password`, `phone`) VALUES ('$username','$email','$password','$phone')";
             $result = $conn->query($sql);
 
             $response['status'] = true;
@@ -86,29 +86,22 @@ switch ($request_type) {
 
         //sql for check same username and password
 
-        try{
+        try {
             $sql = "SELECT * FROM `users` WHERE `username`='$username' AND `password` ='$password'";
             $result = $conn->query($sql);
-            $noOF=mysqli_num_rows($result);
-            if($noOF!=1){
+            $noOF = mysqli_num_rows($result);
+            if ($noOF != 1) {
                 throw new Exception("not such user");
             }
-         
+
 
             $response['status'] = true;
             $response['msg'] = "Sign in Successfully!!";
-
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             $response['status'] = false;
             $response['msg'] = $e->getMessage();
         }
         break;
-
-
-
-
-
 }
 
 $response = json_encode($response);
