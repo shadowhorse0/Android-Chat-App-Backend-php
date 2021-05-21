@@ -137,15 +137,15 @@ switch ($request_type) {
             //sql for check msg with receiver name in msgs table
     
             try {
-                $sql = "SELECT * FROM `msgs` WHERE `receiver`='$receiver";
+                $sql = "SELECT * FROM `msgs` WHERE `receiver`='$receiver'";
                 $result = $conn->query($sql);
                 $noOF = mysqli_num_rows($result);
-                if ($noOF = 0) {
+                if ($noOF == 0) {
                     throw new Exception("no msg for $receiver!");
                 }
 
 
-    
+                $result = $result->fetch_all();
                 $response['msgs'] = $result;
                 $response['status'] = true;
                 $response['msg'] = "sending msgs from pbl db to receiver";
