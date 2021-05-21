@@ -129,6 +129,31 @@ switch ($request_type) {
             $response['msg'] = $e->getMessage();
         }
         break;
+    
+        case "rmsg":
+            $response['status'] = true;
+            $receiver = $data['receiver'];
+    
+            //sql for check msg with receiver name in msgs table
+    
+            try {
+                $sql = "SELECT * FROM `msgs` WHERE `receiver`='$receiver";
+                $result = $conn->query($sql);
+                $noOF = mysqli_num_rows($result);
+                if ($noOF != 1) {
+                    throw new Exception("no msg for $receiver!");
+                }
+
+
+    
+                $response['msgs'] = $result;
+                $response['status'] = true;
+                $response['msg'] = "sending msgs from pbl db to receiver";
+            } catch (Exception $e) {
+                $response['status'] = false;
+                $response['msg'] = $e->getMessage();
+            }
+            break;
     }
 
 $response = json_encode($response);
