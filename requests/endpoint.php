@@ -110,6 +110,13 @@ switch ($request_type) {
         $msg = $data['msg'];
 
         try {
+
+            //inserting received msg to database
+            $sql = "INSERT INTO `msgs`(`sender`, `receiver`, `msg`) VALUES ('$sender','$receiver','$msg')";
+            $conn->query($sql);
+
+
+
             $response['sender'] = $sender;
             $response['receiver'] = $receiver;
             $response['msg'] = $msg;
