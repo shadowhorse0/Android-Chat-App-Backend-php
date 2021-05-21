@@ -102,7 +102,27 @@ switch ($request_type) {
             $response['msg'] = $e->getMessage();
         }
         break;
-}
+    
+    case "smsg":
+        $response['status'] = true;
+        $sender = $data['sender'];
+        $receiver = $data['receiver'];
+        $msg = $data['msg'];
+
+        try {
+            $response['sender'] = $sender;
+            $response['receiver'] = $receiver;
+            $response['msg'] = $msg;
+
+
+            $response['status'] = true;
+            $response['msg'] = "msg received to pbl database!";
+        } catch (Exception $e) {
+            $response['status'] = false;
+            $response['msg'] = $e->getMessage();
+        }
+        break;
+    }
 
 $response = json_encode($response);
 echo $response;
